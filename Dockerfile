@@ -85,5 +85,5 @@ EXPOSE 8080 5555 8793
 
 USER airflow
 WORKDIR ${AIRFLOW_USER_HOME}
-ENTRYPOINT ["${AIRFLOW_USER_HOME}/entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
 #CMD ["webserver"]
