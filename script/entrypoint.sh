@@ -110,9 +110,12 @@ wait_for_port() {
 case "$1" in
   webserver)
     airflow initdb
+    echo $AIRFLOW__CORE__EXECUTOR
     if [ "$AIRFLOW__CORE__EXECUTOR" = "LocalExecutor" ] || [ "$AIRFLOW__CORE__EXECUTOR" = "SequentialExecutor" ]; then
       # With the "Local" and "Sequential" executors it should all run in one container.
+      echo "start scheduler"
       airflow scheduler &
+      echo "end scheduler"
     fi
     exec airflow webserver
     ;;
