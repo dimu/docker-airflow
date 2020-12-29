@@ -114,7 +114,7 @@ case "$1" in
     if [ "$AIRFLOW__CORE__EXECUTOR" = "LocalExecutor" ] || [ "$AIRFLOW__CORE__EXECUTOR" = "SequentialExecutor" ]; then
       # With the "Local" and "Sequential" executors it should all run in one container.
       echo "start scheduler"
-      airflow scheduler -D
+      exec airflow scheduler &
       echo "end scheduler"
     fi
     exec airflow webserver
