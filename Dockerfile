@@ -80,6 +80,7 @@ RUN set -ex \
 
 COPY script/entrypoint.sh ${AIRFLOW_USER_HOME}/entrypoint.sh
 COPY config/airflow.cfg ${AIRFLOW_USER_HOME}/airflow.cfg
+COPY plugins/* ${AIRFLOW_USER_HOME}/plugins/
 
 RUN chown -R airflow:airflow ${AIRFLOW_USER_HOME}
 
